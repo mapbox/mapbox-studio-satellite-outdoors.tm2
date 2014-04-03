@@ -9,19 +9,34 @@ bounds:
   - 180
   - 85.0511
 center: 
-  - -92.94433593749999
-  - 36.50963615733049
-  - 5
+  - -157.89688110351562
+  - 21.345345127505063
+  - 12
 description: Vector contours + Mapbox Streets labels for satellite map
 format: "png8:m=h:c=128"
 interactivity_layer: ''
-layers: null
+layers: 
+  - contour.line
+  - tunnel
+  - road
+  - bridge
+  - admin
+  - country_label_line
+  - country_label
+  - marine_label
+  - state_label
+  - place_label
+  - water_label
+  - poi_label
+  - road_label
+  - waterway_label
+  - contour.label
 maxzoom: 22
 minzoom: 0
-mtime: 1396545333730
+mtime: 1396560032255
 name: Satellite Contours + Labels
 scale: 1
-source: "mapbox:///mapbox.mapbox-terrain-v1,mapbox.mapbox-streets-v4"
+source: "mapbox:///mapbox.mapbox-terrain-v1,mapbox.mapbox-streets-v42-dev"
 styles: 
   - contour.mss
   - labels.mss
