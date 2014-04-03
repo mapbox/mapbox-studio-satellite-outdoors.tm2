@@ -542,7 +542,10 @@
 // POI LABELS
 // =====================================================================
 
-// Parks
+// All POI labels need clean-up and relationship between types
+
+// Parks ______________________________________________________
+
 #poi_label[maki='park'][scalerank<=3][localrank<=1] { 
   [zoom<14],
   [zoom>=14][scalerank<=1][localrank<=1],
@@ -560,40 +563,37 @@
     text-wrap-width: 80;
     text-wrap-before: true;
     text-avoid-edges: true;
-    text-dy: 7;
+    text-dy: 12;
     [zoom>=16] {
       text-size: 11;
-      text-dy: 8;
       }
      [zoom>=17] {
       text-size: 12;
       text-wrap-width: 90;
-      text-dy: 9;
       }
     [zoom>=18] {
       text-size: 13;
       text-wrap-width: 95;
-      text-dy: 10;
       }
     marker-file: url("img/maki/park-18.svg");
   }
 }
 
-// Mountain peaks
+// Mountain peaks ______________________________________________________
+
 #poi_label[type='Peak'] {
-  marker-file: url("img/maki/triangle-12.svg");
-  marker-line-width: 0;  
+  marker-file: url("img/maki/triangle-12.svg"); 
   text-name: @name;
-  text-face-name: @sans;
+  text-face-name: @sans_bold;
   //text-transform:uppercase;
   text-size: 10;
-  text-character-spacing: 1;
+  text-character-spacing: 0.5;
   text-wrap-width: 30;
   text-fill: @place_text;
   text-halo-fill: @poi_halo;
   text-halo-radius: 2;
   text-halo-rasterizer: fast;
-  text-dy: 7;
+  text-dy: 12;
   [zoom>=15] { 
     text-size: 11; 
     text-dy: 8; 
@@ -610,26 +610,115 @@
     }
 }
 
-// Scalerank 1 and 2
-#poi_label[type!='Peak'][maki!='park'][scalerank<=2] {
+
+// Airports ______________________________________________________
+
+#poi_label[type='Aerodrome'][zoom>=11] {
+  marker-file: url("img/airport/[maki]-12.svg");
+  text-name: "''";
+  text-size: 10;
+  text-fill: @place_text;
+  text-halo-fill: @poi_halo;
+  text-halo-radius: 2;
+  text-halo-rasterizer: fast;
+  text-face-name: @sans_bold;
+  text-character-spacing: 1;
+  text-line-spacing: -2;
+  text-placement-type: simple;
+  text-placements: "S,N,E,W";
+  text-dx: 8; text-dy: 8;
+  [zoom>=11][zoom<=13][scalerank=1],
+  [zoom>=12][zoom<=13][scalerank=2] {
+    text-name: [ref];
+  }
+  [zoom>=14] {
+    text-name: @name;
+    text-wrap-before: true;
+  }
+  [zoom>=11][scalerank=1],
+  [zoom>=12][scalerank=2],
+  [zoom>=14] {
+    marker-file: url("img/airport/[maki]-18.svg");
+    text-size: 10;
+    text-dx: 12; text-dy: 12;
+    text-wrap-width: 80;
+  }
+  [zoom>=13][scalerank=1],
+  [zoom>=14][scalerank=2],
+  [zoom>=15] {
+    marker-file: url("img/airport/[maki]-24.svg");
+    text-size: 12;
+    text-dx: 15; text-dy: 15;
+    text-wrap-width: 100;
+  }
+  [zoom>=14][scalerank=1],
+  [zoom>=15][scalerank=2] {
+    marker-file: url("img/airport/[maki]-24.svg");
+    text-size: 14;
+    text-dx: 19; text-dy: 19;
+    text-wrap-width: 120;
+  }
+}
+
+// Rail (not subway or light) ___________________________________________
+
+// 6_1__ Rail Stations _________________________________________________
+
+#poi_label[type='Rail Station'][network='rail'] {
+  marker-file: url("img/rail/rail-12.svg");
+  marker-height: 12;
+  marker-allow-overlap: false;
+  marker-file: url("img/rail/rail-18.svg");
+  marker-height: 18;
+  [zoom>15] {
+    text-name: @name;
+    text-face-name: @sans_bold;
+    text-character-spacing: 1;
+    text-fill: @place_text;
+    text-halo-fill: @poi_halo;
+    text-halo-radius: 2;
+    text-halo-rasterizer: fast;
+    text-size: 11;
+    text-wrap-width: 80;
+    text-line-spacing: -2;
+    text-dy: 11;
+    [zoom>=17] {
+      text-size: 12;
+      text-halo-radius: 1.5;
+      text-dy: 15;
+    }
+  }
+}
+
+// Scalerank 1 & 2 ______________________________________________________
+
+#poi_label[type!='Peak']
+[type!='Aerodrome']
+[maki!='park']
+[type!='Rail Station']
+[scalerank<=2] {
+  [scalerank=1],
+  [scalerank=2][zoom>=15] {  
   text-name: @name;
-  text-face-name: @sans;
+  text-face-name: @sans_bold;
   text-size: 10;
   text-character-spacing: 1;
-  text-wrap-width: 30;
   text-line-spacing: -2;
+  text-wrap-width: 50;
   text-fill: @place_text;
   text-halo-fill: @poi_halo;
   text-halo-radius: 2;
   text-halo-rasterizer: fast;
   [zoom>=15] { 
     text-size: 11; 
-    text-wrap-width: 35;}
+    text-wrap-width: 55;}
   [zoom>=17] { 
     text-size: 12; 
-    text-wrap-width: 40;}
+    text-wrap-width: 60;}
   [zoom>=19] { 
       text-size: 13; 
-      text-wrap-width: 45;
     }
+  }
 }
+
+
