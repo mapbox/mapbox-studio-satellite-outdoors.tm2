@@ -5,16 +5,20 @@
 <Parameters>
   <Parameter name="attribution"><![CDATA[<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a> <a class='mapbox-improve-map' href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a>]]></Parameter>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">-116.45988464355469,40.2403899410384,14</Parameter>
+  <Parameter name="center">-44.6484375,17.727758609852284,3</Parameter>
+  <Parameter name="description"><![CDATA[Vector contours + Mapbox Streets labels for satellite map]]></Parameter>
   <Parameter name="format">png8:m=h:c=128</Parameter>
   <Parameter name="maxzoom">22</Parameter>
   <Parameter name="minzoom">0</Parameter>
-  <Parameter name="name"><![CDATA[Satellite Contours]]></Parameter>
+  <Parameter name="name"><![CDATA[Satellite Contours + Labels]]></Parameter>
   <Parameter name="scale">1</Parameter>
-  <Parameter name="source"><![CDATA[mapbox:///mapbox.mapbox-terrain-v1]]></Parameter>
+  <Parameter name="source"><![CDATA[mapbox:///mapbox.mapbox-terrain-v1,mapbox.mapbox-streets-v4]]></Parameter>
 </Parameters>
 
-
+<FontSet name="fontset-0">
+  <Font face-name="Open Sans Bold"/>
+  <Font face-name="Arial Unicode MS Bold"/>
+</FontSet>
 <Layer name="hillshade"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
       </Layer>
@@ -249,5 +253,329 @@
     <StyleName>contour-blk</StyleName>
     <StyleName>contour</StyleName>
     <StyleName>contour-label</StyleName>  </Layer>
+
+<Layer name="landuse"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
+
+<Layer name="waterway"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
+
+<Layer name="water"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
+
+<Layer name="aeroway"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
+
+<Layer name="barrier_line"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
+
+<Layer name="building"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
+
+<Layer name="landuse_overlay"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
+
+<Layer name="tunnel"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
+
+<Layer name="road"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
+
+<Layer name="bridge"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
+
+<Layer name="admin"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
+
+<Style name="country_label_line" filter-mode="first">
+  <Rule>
+    <LineSymbolizer stroke="#ffffff" stroke-opacity="0.6" stroke-width="0.8" stroke-dasharray="5, 2" />
+  </Rule>
+</Style>
+<Layer name="country_label_line"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+    <StyleName>country_label_line</StyleName>  </Layer>
+
+<Style name="country_label" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([scalerank] &gt;= 6)</Filter>
+    <TextSymbolizer size="16" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>1500000</MinScaleDenominator>
+    <Filter>([scalerank] &gt;= 6)</Filter>
+    <TextSymbolizer size="14" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([scalerank] &gt;= 6)</Filter>
+    <TextSymbolizer size="12" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <Filter>([scalerank] &gt;= 6)</Filter>
+    <TextSymbolizer size="11" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>100000000</MinScaleDenominator>
+    <Filter>([scalerank] &gt;= 6)</Filter>
+    <TextSymbolizer opacity="0.75" fontset-name="fontset-0" placement="point" size="10" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([scalerank] &gt;= 6)</Filter>
+    <TextSymbolizer fontset-name="fontset-0" placement="point" size="10" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([scalerank] = 5)</Filter>
+    <TextSymbolizer size="18" wrap-width="120" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>1500000</MinScaleDenominator>
+    <Filter>([scalerank] = 5)</Filter>
+    <TextSymbolizer size="16" wrap-width="90" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([scalerank] = 5)</Filter>
+    <TextSymbolizer size="14" wrap-width="60" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <Filter>([scalerank] = 5)</Filter>
+    <TextSymbolizer size="13" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([scalerank] = 5)</Filter>
+    <TextSymbolizer size="12" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>100000000</MinScaleDenominator>
+    <Filter>([scalerank] = 5)</Filter>
+    <TextSymbolizer opacity="0.75" fontset-name="fontset-0" placement="point" size="10" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([scalerank] = 5)</Filter>
+    <TextSymbolizer fontset-name="fontset-0" placement="point" size="10" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([scalerank] = 4)</Filter>
+    <TextSymbolizer size="20" wrap-width="120" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>1500000</MinScaleDenominator>
+    <Filter>([scalerank] = 4)</Filter>
+    <TextSymbolizer size="18" wrap-width="120" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([scalerank] = 4)</Filter>
+    <TextSymbolizer size="16" wrap-width="90" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <Filter>([scalerank] = 4)</Filter>
+    <TextSymbolizer size="15" wrap-width="60" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([scalerank] = 4)</Filter>
+    <TextSymbolizer size="13" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>100000000</MinScaleDenominator>
+    <Filter>([scalerank] = 4)</Filter>
+    <TextSymbolizer opacity="0.75" fontset-name="fontset-0" placement="point" size="10" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([scalerank] = 4)</Filter>
+    <TextSymbolizer fontset-name="fontset-0" placement="point" size="10" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([scalerank] = 3)</Filter>
+    <TextSymbolizer size="20" wrap-width="120" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([scalerank] = 3)</Filter>
+    <TextSymbolizer size="18" wrap-width="60" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <Filter>([scalerank] = 3)</Filter>
+    <TextSymbolizer size="17" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([scalerank] = 3)</Filter>
+    <TextSymbolizer size="15" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([scalerank] = 3)</Filter>
+    <TextSymbolizer size="11" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>100000000</MinScaleDenominator>
+    <Filter>([scalerank] = 3)</Filter>
+    <TextSymbolizer opacity="0.75" fontset-name="fontset-0" placement="point" size="10" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>50000000</MinScaleDenominator>
+    <Filter>([scalerank] = 3)</Filter>
+    <TextSymbolizer fontset-name="fontset-0" placement="point" size="10" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([scalerank] = 2)</Filter>
+    <TextSymbolizer size="20" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([scalerank] = 2)</Filter>
+    <TextSymbolizer size="17" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([scalerank] = 2)</Filter>
+    <TextSymbolizer size="13" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000000</MaxScaleDenominator>
+    <MinScaleDenominator>50000000</MinScaleDenominator>
+    <Filter>([scalerank] = 2)</Filter>
+    <TextSymbolizer size="12" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>100000000</MinScaleDenominator>
+    <Filter>([scalerank] = 2)</Filter>
+    <TextSymbolizer opacity="0.75" fontset-name="fontset-0" placement="point" size="10" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>200000000</MinScaleDenominator>
+    <Filter>([scalerank] = 2)</Filter>
+    <TextSymbolizer fontset-name="fontset-0" placement="point" size="10" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([scalerank] = 1)</Filter>
+    <TextSymbolizer size="20" wrap-width="120" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([scalerank] = 1)</Filter>
+    <TextSymbolizer size="20" wrap-width="120" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([scalerank] = 1)</Filter>
+    <TextSymbolizer size="14" wrap-width="90" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000000</MaxScaleDenominator>
+    <MinScaleDenominator>50000000</MinScaleDenominator>
+    <Filter>([scalerank] = 1)</Filter>
+    <TextSymbolizer size="13" wrap-width="60" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>100000000</MinScaleDenominator>
+    <Filter>([scalerank] = 1)</Filter>
+    <TextSymbolizer size="12" wrap-width="60" opacity="0.75" fontset-name="fontset-0" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>200000000</MinScaleDenominator>
+    <Filter>([scalerank] = 1)</Filter>
+    <TextSymbolizer fontset-name="fontset-0" placement="point" size="10" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>100000000</MinScaleDenominator>
+    <TextSymbolizer opacity="0.75" fontset-name="fontset-0" placement="point" size="10" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <TextSymbolizer fontset-name="fontset-0" placement="point" size="10" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.050000000000000044)" halo-radius="1" halo-rasterizer="fast" wrap-width="30" minimum-distance="2" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+</Style>
+<Layer name="country_label"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+    <StyleName>country_label</StyleName>  </Layer>
+
+<Layer name="marine_label"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
+
+<Layer name="state_label"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
+
+<Layer name="place_label"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
+
+<Layer name="water_label"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
+
+<Layer name="poi_label"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
+
+<Layer name="road_label"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
+
+<Layer name="waterway_label"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
 
 </Map>
