@@ -5,7 +5,7 @@
 <Parameters>
   <Parameter name="attribution"><![CDATA[<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a> <a class='mapbox-improve-map' href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a>]]></Parameter>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">-44.6484375,17.727758609852284,3</Parameter>
+  <Parameter name="center">-92.94433593749999,36.50963615733049,5</Parameter>
   <Parameter name="description"><![CDATA[Vector contours + Mapbox Streets labels for satellite map]]></Parameter>
   <Parameter name="format">png8:m=h:c=128</Parameter>
   <Parameter name="maxzoom">22</Parameter>
@@ -18,6 +18,10 @@
 <FontSet name="fontset-0">
   <Font face-name="Open Sans Bold"/>
   <Font face-name="Arial Unicode MS Bold"/>
+</FontSet>
+<FontSet name="fontset-1">
+  <Font face-name="Open Sans Regular"/>
+  <Font face-name="Arial Unicode MS Regular"/>
 </FontSet>
 <Layer name="hillshade"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
@@ -294,9 +298,416 @@
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
       </Layer>
 
+<Style name="admin-lev34" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <Filter>([admin_level] &gt;= 3)</Filter>
+    <LineSymbolizer stroke-width="3" stroke="#ffffff" stroke-dasharray="10, 3, 3, 3" stroke-opacity="0.25" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([admin_level] &gt;= 3)</Filter>
+    <LineSymbolizer stroke-width="2" stroke="#ffffff" stroke-dasharray="10, 3, 3, 3" stroke-opacity="0.25" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([admin_level] &gt;= 3)</Filter>
+    <LineSymbolizer stroke-width="1.5" stroke="#ffffff" stroke-dasharray="10, 3, 3, 3" stroke-opacity="0.25" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([admin_level] &gt;= 3)</Filter>
+    <LineSymbolizer stroke="#ffffff" stroke-width="1" stroke-dasharray="10, 3, 3, 3" stroke-opacity="0.25" />
+  </Rule>
+</Style>
+<Style name="admin-lev2off" filter-mode="first" opacity="0.5">
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="13, 7" stroke-width="3" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="11, 6" stroke-width="2.6" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="9, 5" stroke-width="2.2" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="7, 4" stroke-width="1.8" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="5, 3" stroke-width="1.2" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="15, 8" stroke-width="4" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="4, 3" stroke-width="0.8" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>50000000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="4, 3" stroke-width="0.4" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="13, 7" stroke-width="3" stroke-linejoin="round" stroke="#222222" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="11, 6" stroke-width="2.6" stroke-linejoin="round" stroke="#222222" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="9, 5" stroke-width="2.2" stroke-linejoin="round" stroke="#222222" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="7, 4" stroke-width="1.8" stroke-linejoin="round" stroke="#222222" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="5, 3" stroke-width="1.2" stroke-linejoin="round" stroke="#222222" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="15, 8" stroke-width="4" stroke-linejoin="round" stroke="#222222" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="4, 3" stroke-width="0.8" stroke-linejoin="round" stroke="#222222" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>50000000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="4, 3" stroke-width="0.4" stroke-linejoin="round" stroke="#222222" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([admin_level] = 2) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-width="4" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-width="3" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-width="2.6" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-width="2.2" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-width="1.8" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-width="1.2" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-width="0.8" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>50000000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-width="0.4" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([admin_level] = 2)</Filter>
+    <LineSymbolizer stroke-width="4" stroke-linejoin="round" stroke="#222222" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([admin_level] = 2)</Filter>
+    <LineSymbolizer stroke-width="3" stroke-linejoin="round" stroke="#222222" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([admin_level] = 2)</Filter>
+    <LineSymbolizer stroke-width="2.6" stroke-linejoin="round" stroke="#222222" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([admin_level] = 2)</Filter>
+    <LineSymbolizer stroke-width="2.2" stroke-linejoin="round" stroke="#222222" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([admin_level] = 2)</Filter>
+    <LineSymbolizer stroke-width="1.8" stroke-linejoin="round" stroke="#222222" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([admin_level] = 2)</Filter>
+    <LineSymbolizer stroke-width="1.2" stroke-linejoin="round" stroke="#222222" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([admin_level] = 2)</Filter>
+    <LineSymbolizer stroke-width="0.8" stroke-linejoin="round" stroke="#222222" offset="1" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>50000000</MinScaleDenominator>
+    <Filter>([admin_level] = 2)</Filter>
+    <LineSymbolizer stroke-width="0.4" stroke-linejoin="round" stroke="#222222" offset="1" />
+  </Rule>
+</Style>
+<Style name="admin-lev2" filter-mode="first" opacity="0.8">
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="13, 7" stroke-width="3" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="11, 6" stroke-width="2.6" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="9, 5" stroke-width="2.2" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="7, 4" stroke-width="1.8" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="5, 3" stroke-width="1.2" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="15, 8" stroke-width="4" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="4, 3" stroke-width="0.8" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>50000000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="4, 3" stroke-width="0.4" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="13, 7" stroke-width="3" stroke-linejoin="round" stroke="#ffffff" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="11, 6" stroke-width="2.6" stroke-linejoin="round" stroke="#ffffff" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="9, 5" stroke-width="2.2" stroke-linejoin="round" stroke="#ffffff" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="7, 4" stroke-width="1.8" stroke-linejoin="round" stroke="#ffffff" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="5, 3" stroke-width="1.2" stroke-linejoin="round" stroke="#ffffff" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="15, 8" stroke-width="4" stroke-linejoin="round" stroke="#ffffff" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="4, 3" stroke-width="0.8" stroke-linejoin="round" stroke="#ffffff" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>50000000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([disputed] = 1)</Filter>
+    <LineSymbolizer stroke-dasharray="4, 3" stroke-width="0.4" stroke-linejoin="round" stroke="#ffffff" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([admin_level] = 2) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-width="4" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-width="3" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-width="2.6" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-width="2.2" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-width="1.8" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-width="1.2" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-width="0.8" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>50000000</MinScaleDenominator>
+    <Filter>([admin_level] = 2) and ([maritime] = 1)</Filter>
+    <LineSymbolizer stroke-width="0.4" stroke="#002266" stroke-opacity="0.05" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([admin_level] = 2)</Filter>
+    <LineSymbolizer stroke-width="4" stroke-linejoin="round" stroke="#ffffff" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([admin_level] = 2)</Filter>
+    <LineSymbolizer stroke-width="3" stroke-linejoin="round" stroke="#ffffff" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([admin_level] = 2)</Filter>
+    <LineSymbolizer stroke-width="2.6" stroke-linejoin="round" stroke="#ffffff" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([admin_level] = 2)</Filter>
+    <LineSymbolizer stroke-width="2.2" stroke-linejoin="round" stroke="#ffffff" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([admin_level] = 2)</Filter>
+    <LineSymbolizer stroke-width="1.8" stroke-linejoin="round" stroke="#ffffff" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([admin_level] = 2)</Filter>
+    <LineSymbolizer stroke-width="1.2" stroke-linejoin="round" stroke="#ffffff" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([admin_level] = 2)</Filter>
+    <LineSymbolizer stroke-width="0.8" stroke-linejoin="round" stroke="#ffffff" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>50000000</MinScaleDenominator>
+    <Filter>([admin_level] = 2)</Filter>
+    <LineSymbolizer stroke-width="0.4" stroke-linejoin="round" stroke="#ffffff" />
+  </Rule>
+</Style>
 <Layer name="admin"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-      </Layer>
+    <StyleName>admin-lev2</StyleName>
+    <StyleName>admin-lev2off</StyleName>
+    <StyleName>admin-lev34</StyleName>  </Layer>
 
 <Style name="country_label_line" filter-mode="first">
   <Rule>
@@ -554,9 +965,103 @@
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
       </Layer>
 
+<Style name="state_label" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([area] &gt; 100000)</Filter>
+    <TextSymbolizer size="18" character-spacing="2" wrap-width="100" fontset-name="fontset-1" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.030000000000000027)" halo-radius="2" halo-rasterizer="fast" minimum-distance="1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>1500000</MinScaleDenominator>
+    <Filter>([area] &gt; 100000)</Filter>
+    <TextSymbolizer size="18" character-spacing="3" wrap-width="60" fontset-name="fontset-1" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.030000000000000027)" halo-radius="2" halo-rasterizer="fast" minimum-distance="1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <Filter>([area] &gt; 100000)</Filter>
+    <TextSymbolizer size="14" wrap-width="40" fontset-name="fontset-1" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.030000000000000027)" halo-radius="2" halo-rasterizer="fast" minimum-distance="1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([area] &gt; 100000)</Filter>
+    <TextSymbolizer fontset-name="fontset-1" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.030000000000000027)" halo-radius="2" halo-rasterizer="fast" minimum-distance="1" size="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([area] &gt; 50000)</Filter>
+    <TextSymbolizer size="18" character-spacing="2" wrap-width="100" fontset-name="fontset-1" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.030000000000000027)" halo-radius="2" halo-rasterizer="fast" minimum-distance="1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>1500000</MinScaleDenominator>
+    <Filter>([area] &gt; 50000)</Filter>
+    <TextSymbolizer size="16" character-spacing="1" wrap-width="60" fontset-name="fontset-1" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.030000000000000027)" halo-radius="2" halo-rasterizer="fast" minimum-distance="1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <Filter>([area] &gt; 50000)</Filter>
+    <TextSymbolizer size="14" wrap-width="40" fontset-name="fontset-1" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.030000000000000027)" halo-radius="2" halo-rasterizer="fast" minimum-distance="1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([area] &gt; 50000)</Filter>
+    <TextSymbolizer fontset-name="fontset-1" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.030000000000000027)" halo-radius="2" halo-rasterizer="fast" minimum-distance="1" size="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <Filter>([area] &gt; 10000)</Filter>
+    <TextSymbolizer size="12" wrap-width="40" fontset-name="fontset-1" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.030000000000000027)" halo-radius="2" halo-rasterizer="fast" minimum-distance="1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([area] &gt; 10000)</Filter>
+    <TextSymbolizer size="16" character-spacing="2" wrap-width="100" fontset-name="fontset-1" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.030000000000000027)" halo-radius="2" halo-rasterizer="fast" minimum-distance="1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>1500000</MinScaleDenominator>
+    <Filter>([area] &gt; 10000)</Filter>
+    <TextSymbolizer size="14" wrap-width="60" fontset-name="fontset-1" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.030000000000000027)" halo-radius="2" halo-rasterizer="fast" minimum-distance="1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([area] &gt; 10000)</Filter>
+    <TextSymbolizer fontset-name="fontset-1" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.030000000000000027)" halo-radius="2" halo-rasterizer="fast" minimum-distance="1" size="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <TextSymbolizer size="16" character-spacing="2" wrap-width="100" fontset-name="fontset-1" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.030000000000000027)" halo-radius="2" halo-rasterizer="fast" minimum-distance="1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>1500000</MinScaleDenominator>
+    <TextSymbolizer size="14" wrap-width="60" fontset-name="fontset-1" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.030000000000000027)" halo-radius="2" halo-rasterizer="fast" minimum-distance="1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <TextSymbolizer wrap-width="40" fontset-name="fontset-1" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.030000000000000027)" halo-radius="2" halo-rasterizer="fast" minimum-distance="1" size="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <TextSymbolizer fontset-name="fontset-1" placement="point" fill="#ffffff" halo-fill="rgba(34, 34, 34, 0.030000000000000027)" halo-radius="2" halo-rasterizer="fast" minimum-distance="1" size="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+</Style>
 <Layer name="state_label"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-      </Layer>
+    <StyleName>state_label</StyleName>  </Layer>
 
 <Layer name="place_label"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
