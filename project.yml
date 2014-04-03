@@ -1,0 +1,27 @@
+_prefs: 
+  baselayer: matt.hb1g1mdo
+  saveCenter: true
+_properties: {}
+attribution: "<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a> <a class='mapbox-improve-map' href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a>"
+bounds: 
+  - -180
+  - -85.0511
+  - 180
+  - 85.0511
+center: 
+  - -116.45988464355469
+  - 40.2403899410384
+  - 14
+description: ''
+format: "png8:m=h:c=128"
+interactivity_layer: ''
+layers: null
+maxzoom: 22
+minzoom: 0
+mtime: 1396458890343
+name: Satellite Contours
+scale: 1
+source: "mapbox:///mapbox.mapbox-terrain-v1"
+styles: 
+  - contour.mss
+template: ''
