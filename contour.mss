@@ -11,31 +11,32 @@
   [zoom>=16] {
     ::wht,
     ::blk {
-      line-color: #fff;
-      line-opacity:0.5;
+      //line-color: #89ffb7;
+      line-color: #c4ffdb;
+      line-opacity:0.6;
       line-join:round;
       //line-comp-op: dst-out;
       [zoom<=14] {
         line-width:0.5;
-        [index>=5] { line-width:1; line-opacity:0.6; }
+        [index>=5] { line-width:1; line-opacity:0.8; }
       }
       [zoom=15] {
         line-width:0.65;
-        [index>=5] { line-width:1.3; line-opacity:0.6;}
+        [index>=5] { line-width:1.3; line-opacity:0.8; }
       }
       [zoom=16] {
         line-width:0.8;
-        [index>=5] { line-width:1.6;line-opacity:0.6; }
+        [index>=5] { line-width:1.6;line-opacity:0.8; }
       }
       [zoom>=17] {
         line-width:1;
-        [index>=5] { line-width:2;line-opacity:0.6; }
+        [index>=5] { line-width:2;line-opacity:0.8; }
       }
     }
     ::blk {
       line-offset:1;
       line-color:#000;
-      line-opacity:0.5;
+      line-opacity:0.6;
       [zoom>=11] {
         line-width:0.75;
         [index>=5] {
@@ -71,7 +72,7 @@
       //text-face-name:'Arial Unicode MS Regular';
       text-face-name: @sans;
       text-placement:line;
-      text-fill:#fff;
+      text-fill:@poi_fill;
       text-size:10;
       text-character-spacing: 1;
       text-avoid-edges:true;

@@ -30,12 +30,14 @@
 @rail_halo: fadeout(@place_halo,85);
 @airport_halo: fadeout(@place_halo,85);
 
+//@poi_fill: #eaff62;
+@poi_fill: #c4ffdb;
 
 @road_fill:     #fff;
-@road_halo:         fadeout(#333,85);
+@road_halo:         fadeout(#333,80);
 @road_text:         #fff;
 
-@marine_text: #fff;
+@marine_text: #445;
 
 
 
@@ -107,7 +109,108 @@
     [zoom>=12] { line-width: 3; }
   }
 }
- 
+
+// =====================================================================
+// MARINE LABELS
+// =====================================================================
+
+#marine_label {
+  text-name: @name;
+  text-face-name: @sans_lt_italic;
+  text-fill: @marine_text;
+  text-wrap-width: 80;
+  text-wrap-before: true;
+  [placement = 'point'] {
+    text-placement: point;
+  }
+  [placement = 'line'] {
+    text-placement: line;
+    text-avoid-edges: true;
+  }
+  [labelrank = 1] {
+    [zoom = 3] {
+      text-size: 20;
+      text-character-spacing: 8;
+      text-line-spacing: 16;
+    }
+    [zoom = 4] {
+      text-size: 25;
+      text-character-spacing: 16;
+      text-line-spacing: 24;
+    }
+    [zoom = 5] {
+      text-size: 30;
+      text-character-spacing: 20;
+      text-line-spacing: 32;
+    }
+  }
+  [labelrank = 2] {
+    [zoom = 3] {
+      text-size: 13;
+      text-character-spacing: 1;
+      text-line-spacing: 6;
+    }
+    [zoom = 4] {
+      text-size: 14;
+      text-character-spacing: 2;
+      text-line-spacing: 8;
+    }
+    [zoom = 5] {
+      text-size: 20;
+      text-character-spacing: 4;
+      text-line-spacing: 8;
+    }
+    [zoom = 6] {
+      text-size: 24;
+      text-character-spacing: 5;
+      text-line-spacing: 10;
+    }
+  }
+  [labelrank = 3] {
+    [zoom = 3] {
+      text-size: 12;
+      text-character-spacing: 2;
+      text-line-spacing: 3;
+    }
+    [zoom = 4] {
+      text-size: 13;
+      text-character-spacing: 3;
+      text-line-spacing: 8;
+    }
+    [zoom = 5] {
+      text-size: 15;
+      text-character-spacing: 4;
+      text-line-spacing: 8;
+    }
+    [zoom = 6] {
+      text-size: 18;
+      text-character-spacing: 5;
+      text-line-spacing: 10;
+    }
+  }
+  [labelrank = 4][zoom = 4],
+  [labelrank = 5][zoom = 5],
+  [labelrank = 6][zoom = 6] {
+    text-size: 12;
+    text-character-spacing: 2;
+    text-line-spacing: 6;
+  }
+  [labelrank = 4][zoom = 5],
+  [labelrank = 5][zoom = 6],
+  [labelrank = 6][zoom = 7] {
+    text-size: 14;
+    text-character-spacing: 3;
+    text-line-spacing: 8;
+  }
+  [labelrank = 4][zoom = 6],
+  [labelrank = 5][zoom = 7] {
+    text-size: 16;
+    text-character-spacing: 4;
+    text-line-spacing: 1;
+  }
+}
+
+
 // =====================================================================
 // PLACE NAMES
 // =====================================================================
@@ -414,10 +517,11 @@
 #place_label[type='suburb'][zoom>=12][zoom<=17] {
   text-name: @name;
   text-face-name: @sans;
+  text-transform:	uppercase;
   text-placement: point;
   text-fill: @place_text;
   text-size: 11;
-  text-character-spacing:	0.5;
+  text-character-spacing:	1.5;
   text-halo-fill: @neigh_halo;
   text-halo-radius: 2;
   text-halo-rasterizer: fast;
@@ -452,16 +556,52 @@
     text-min-distance: 4;
     text-line-spacing: -2;
     [zoom>=14] { text-size: 11; text-wrap-width: 80; }
-    [zoom>=16] { text-size: 13; text-wrap-width: 100; }
-    [zoom>=17] { text-size: 15; text-wrap-width: 130; }
-    [zoom>=18] { text-size: 17; text-wrap-width: 160; }
+    [zoom>=15] { text-size: 13; text-wrap-width: 80; }
+    [zoom>=16] { text-size: 14; text-wrap-width: 100; }
+    [zoom>=17] { text-size: 16; text-wrap-width: 130; }
+    [zoom>=18] { text-size: 18; text-wrap-width: 160; }
   }
 }
 
 // =====================================================================
-// ROAD LABELS
+// ROADS + ROAD LABELS
 // =====================================================================
+/*
+#bridge { opacity: .5; comp-op: xor; }
+#road { opacity:.45; }
+#tunnel { opacity: 0.13; }
 
+#bridge,
+#road[zoom>8],
+#tunnel {
+  ['mapnik::geometry_type'=2] {
+    [class='motorway'],[class='major_rail'],[class='minor_rail'] {
+    line-cap: round;
+    line-join: round;
+    line-gamma: 1.2;
+    line-color: @road_fill;
+    line-width: 1;
+    [class='motorway'] {
+      line-width:1;
+      [zoom>12] { line-width: 1.5; }
+      [zoom=15] { line-width: 3; }
+      [zoom=16] { line-width: 6; }
+      [zoom=17] { line-width: 8; }
+      [zoom>17] { line-width: 12; }
+    }
+    [zoom>15][class='major_rail'],[zoom>15][class='minor_rail'] {
+      line-color: @road_fill;
+      line-cap: butt;
+      line-dasharray:2,2;
+      [zoom=16] { line-width: 2; }
+      [zoom=17] { line-width: 3; }
+      [zoom=18] { line-width: 4; }
+      [zoom>18] { line-width: 5; }
+    }
+   }  
+  }
+}
+*/
 // highway shields
 
 @us-shield-name: "[ref].replace(';.*', '').replace('^[^\d]*', '')";
@@ -474,12 +614,9 @@
   shield-character-spacing:	0.5;
   shield-fill: #fff;
   shield-min-padding: 10;
-  shield-min-distance:40;
+  shield-min-distance: 70;
   shield-halo-fill: fadeout(#000,70);
   shield-halo-radius: 2;
-  [zoom>=11] { shield-min-distance: 50; }
-  [zoom>=12] { shield-min-distance: 60; }
-  [zoom>=13] { shield-min-distance: 70; }
   [zoom>=14] { shield-min-distance: 80; }
   [zoom>=15] {
       //shield-file: url("img/shield/motorway_lg_[reflen].png");
@@ -538,6 +675,126 @@
   }
 }
 
+// regular labels
+#road_label['mapnik::geometry_type'=2] {
+  // Longer roads get a label earlier as they are likely to be more
+  // important. This especially helps label density in rural/remote areas.
+  // This z14 filter is *not* redundant to logic in SQL queries. Because z14
+  // includes all data for z14+ via overzooming, the streets included in a
+  // z14 vector tile include more features than ideal for optimal performance.
+  [class='motorway'][zoom>=14],
+  [class='main'][zoom>=15][len>2000],
+  [class='main'][zoom>=16][len>1000],
+  [class='main'][zoom>=17],
+  [class='street'][zoom>=18],
+  [class='street_limited'][zoom>=19] {
+    text-avoid-edges: true;
+    text-name: @name;
+    text-placement: line;
+    text-face-name: @sans;
+    text-fill: @road_text;
+    text-transform:	uppercase;
+    text-size: 9;
+    text-character-spacing:	2;
+    // Titlecase
+    // text-size: 10; 
+    // text-character-spacing:	0.5; 
+    text-halo-fill: @road_halo;
+    text-halo-radius: 2;
+    text-halo-rasterizer: fast;
+    text-min-distance: 200; // only for labels w/ the same name
+    //[zoom>=14] { text-size: 10; }
+    [zoom>=18] { text-size: 10; }
+    [class='motorway'],
+    [class='main'] {
+    [zoom>=16] { text-size: 10; }
+    [zoom>=17] { text-size: 11; }
+    [zoom>=18] { text-size: 12; }
+    }
+   }
+  }
+
+
+// =====================================================================
+// 4__ WATER LABELS
+// =====================================================================
+
+#water_label {
+  [zoom<=15][area>200000],
+  [zoom=16][area>50000],
+  [zoom=17][area>10000],
+  [zoom>=18][area>0]{
+    text-name: @name;
+    text-halo-radius: 2;
+    text-halo-rasterizer: fast;
+    text-size: 11;
+    text-wrap-width: 50;
+    text-wrap-before: true;
+    text-halo-fill: @water_halo;
+    text-line-spacing: -2;
+    text-face-name: @sans_italic;
+    text-fill: @place_text;
+    text-opacity: 0.5;
+  }
+  [zoom>=14][area>3200000],
+  [zoom>=15][area>800000],
+  [zoom>=16][area>200000],
+  [zoom>=17][area>50000],
+  [zoom>=18][area>10000] {
+    text-size: 12;
+    text-wrap-width: 75;
+  }
+  [zoom>=15][area>3200000],
+  [zoom>=16][area>800000],
+  [zoom>=17][area>200000],
+  [zoom>=18][area>50000] {
+    text-size: 14;
+    text-wrap-width: 100;
+  }
+  [zoom>=16][area>3200000],
+  [zoom>=17][area>800000],
+  [zoom>=18][area>200000] {
+    text-size: 16;
+    text-wrap-width: 125;
+  }
+  [zoom>=17][area>3200000],
+  [zoom>=18][area>800000] {
+    text-size: 18;
+    text-wrap-width: 150;
+  }
+}
+
+#waterway_label[type='river'][zoom>=12],
+#waterway_label[type='canal'][zoom>=14],
+#waterway_label[type='stream'][zoom>=16] {
+  text-avoid-edges: true;
+  text-name: @name;
+  text-face-name: @sans_italic;
+  text-fill: @place_text;
+  text-halo-fill: @water_halo;
+  text-halo-radius: 2;
+  text-halo-rasterizer: fast;
+  text-placement: line;
+  text-min-distance: 400;
+  text-size: 9;
+  text-character-spacing: 0.5;
+  text-opacity: 0.5;
+  [type='river'][zoom=14],
+  [type='canal'][zoom=16],
+  [type='stream'][zoom>=18] {
+    text-size: 10;
+  }
+  [type='river'][zoom=15],
+  [type='canal'][zoom>=17] {
+    text-size: 11;
+  }
+  [type='river'][zoom>=16],
+  [type='canal'][zoom>=18] {
+    text-size: 12;
+    text-spacing: 300;
+  }
+}
+
 // =====================================================================
 // POI LABELS
 // =====================================================================
@@ -555,7 +812,7 @@
     text-face-name: @sans_bold;
     text-size: 10;
     text-character-spacing: 0.5;
-    text-fill: @place_text;
+    text-fill:  @poi_fill;
     text-halo-fill: @poi_halo;
     text-halo-radius: 2;
     text-halo-rasterizer: fast;
@@ -576,6 +833,7 @@
       text-wrap-width: 95;
       }
     marker-file: url("img/maki/park-18.svg");
+    marker-fill: @poi_fill;
   }
 }
 
@@ -583,13 +841,14 @@
 
 #poi_label[type='Peak'] {
   marker-file: url("img/maki/triangle-12.svg"); 
+  marker-fill: @poi_fill;
   text-name: @name;
   text-face-name: @sans_bold;
   //text-transform:uppercase;
   text-size: 10;
   text-character-spacing: 0.5;
   text-wrap-width: 30;
-  text-fill: @place_text;
+  text-fill: @poi_fill;
   text-halo-fill: @poi_halo;
   text-halo-radius: 2;
   text-halo-rasterizer: fast;
@@ -615,6 +874,7 @@
 
 #poi_label[type='Aerodrome'][zoom>=11] {
   marker-file: url("img/airport/[maki]-12.svg");
+  //marker-fill: @poi_fill;
   text-name: "''";
   text-size: 10;
   text-fill: @place_text;
@@ -662,10 +922,9 @@
 
 // Rail (not subway or light) ___________________________________________
 
-// 6_1__ Rail Stations _________________________________________________
-
 #poi_label[type='Rail Station'][network='rail'] {
   marker-file: url("img/rail/rail-12.svg");
+  //marker-fill: @poi_fill;
   marker-height: 12;
   marker-allow-overlap: false;
   marker-file: url("img/rail/rail-18.svg");
