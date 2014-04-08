@@ -4,17 +4,18 @@
 
 
 //offset lines
-#contour.line::line[ele != 0] {
+#contour.line::line[ele!=0] {
   [zoom<=12],
   [zoom>=13][zoom<=15][index=2],
   [zoom>=13][zoom<=15][index=10],
   [zoom>=16] {
-    ::wht,
+    ::grn,
     ::blk {
       //line-color: #89ffb7;
       line-color: #c4ffdb;
       line-opacity:0.6;
       line-join:round;
+      line-clip:false;
       //line-comp-op: dst-out;
       [zoom<=14] {
         line-width:0.5;
@@ -45,7 +46,9 @@
           line-opacity: 0.6;
         }
       }
-    }/*
+    }
+     ::grn[ele<=0] { line-color: spin(@poi_fill, 60); }
+    /*
      [index>=10],
      [zoom>=16][index=5] {
       text-name:"[ele]+'m'";
@@ -81,6 +84,7 @@
       text-halo-rasterizer:fast;
       text-clip:false;
       //text-allow-overlap: true;
+    [ele<=0] { text-fill: spin(@poi_fill, 60); text-dy: -1; }
         
       }
     }

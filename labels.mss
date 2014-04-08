@@ -605,7 +605,7 @@
 // highway shields
 
 @us-shield-name: "[ref].replace(';.*', '').replace('^[^\d]*', '')";
-#road_label::us_shield[class='motorway'][zoom>=13][reflen>0][reflen<=6]{
+#road_label::us_shield[class='motorway'][zoom>=11][reflen>0][reflen<=6]{
   // Default shields
   shield-file: url("img/shield/motorway_lt_lg_[reflen].png");
   shield-name: [ref];
@@ -684,12 +684,14 @@
   // z14 vector tile include more features than ideal for optimal performance.
   [class='motorway'][zoom>=14],
   [class='main'][zoom>=15][len>2000],
-  [class='main'][zoom>=16][len>1000],
-  [class='main'][zoom>=17],
+  //[class='main'][zoom>=16][len>1000],
+  [class='main'][zoom>=16],
+  [class='street'][zoom>=16][len>1000],  
+  [class='street'][zoom>=17][len>500],   
   [class='street'][zoom>=18],
   [class='street_limited'][zoom>=19] {
     text-avoid-edges: true;
-    text-name: @name;
+    text-name: [name];
     text-placement: line;
     text-face-name: @sans;
     text-fill: @road_text;
