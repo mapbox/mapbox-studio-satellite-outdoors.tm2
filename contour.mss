@@ -11,33 +11,44 @@
   [zoom>=16] {
     ::grn,
     ::blk {
-      //line-color: #89ffb7;
       line-color: #c4ffdb;
-      line-opacity:0.6;
+      line-opacity:0.4;
       line-join:round;
       line-clip:false;
-      //line-comp-op: dst-out;
+      //line-smooth: 0.1; // try after mapnik update
       [zoom<=14] {
         line-width:0.5;
-        [index>=5] { line-width:1; line-opacity:0.8; }
+        [index>=5] { line-width:1; line-opacity:0.5; }
       }
       [zoom=15] {
         line-width:0.65;
-        [index>=5] { line-width:1.3; line-opacity:0.8; }
+        [index>=5] { line-width:1.3; line-opacity:0.4; }
       }
-      [zoom=16] {
+      [zoom>=16] {
         line-width:0.8;
-        [index>=5] { line-width:1.6;line-opacity:0.8; }
-      }
+        [index>=5] { line-width:1.6;line-opacity:0.4; }
+      }/*
       [zoom>=17] {
         line-width:1;
-        [index>=5] { line-width:2;line-opacity:0.8; }
-      }
+        [index>=5] { line-width:2;line-opacity:0.4; }
+      }*/
     }
     ::blk {
       line-offset:1;
       line-color:#000;
       line-opacity:0.6;
+      [zoom=15] {
+        [index>5] { line-offset: 1.3; }
+        }
+      [zoom>=16] {
+        line-opacity: 0.5;
+        [index>5] { line-offset: 1.5; line-opacity:0.5; }
+        }/*
+      [zoom>=17] {
+        line-opacity: 0.4;
+        [index>=5] { line-offset:1.5; line-opacity:0.4; }
+      }*/
+      /*
       [zoom>=11] {
         line-width:0.75;
         [index>=5] {
@@ -45,7 +56,7 @@
           line-width:1.4;
           line-opacity: 0.6;
         }
-      }
+      }*/
     }
      ::grn[ele<=0] { line-color: spin(@poi_fill, 60); }
     /*
