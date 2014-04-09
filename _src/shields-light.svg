@@ -102,17 +102,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="4.968654"
-     inkscape:cx="-17.945661"
-     inkscape:cy="65.21634"
+     inkscape:zoom="14.053476"
+     inkscape:cx="13.173243"
+     inkscape:cy="110.36976"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:snap-bbox="true"
      inkscape:window-width="1908"
      inkscape:window-height="875"
-     inkscape:window-x="14"
-     inkscape:window-y="0"
+     inkscape:window-x="839"
+     inkscape:window-y="389"
      inkscape:window-maximized="0"
      inkscape:object-paths="false"
      inkscape:object-nodes="false"
@@ -149,6 +149,13 @@
      id="layer1"
      transform="translate(-165,-217.36218)">
     <rect
+       style="fill:#ffa49f;fill-opacity:1;stroke:#000000;stroke-width:0.045;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3009"
+       width="80"
+       height="100"
+       x="70"
+       y="217.36218" />
+    <rect
        style="fill:#ff4040;fill-opacity:0;stroke:none"
        id="rect3526"
        width="29"
@@ -156,20 +163,20 @@
        x="170"
        y="222.36218" />
     <path
-       style="color:#000000;fill:#000000;fill-opacity:0.2;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.99629498000000005;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;opacity:1"
-       d="m 175.146,224.90028 c 2.0562,2.50046 4.79776,2.50046 6.85573,0 2.05441,2.50046 4.79598,2.50046 6.85216,0 l 3.42697,4.16745 c -2.74159,4.16744 2.74158,7.50139 -1.37079,12.50232 -2.74157,3.33394 -5.48315,0 -8.90834,3.33394 -3.42876,-3.33394 -6.17033,0 -8.91189,-3.33394 -4.11237,-5.00093 1.37078,-8.33488 -1.36725,-12.50232 z"
+       style="color:#000000;fill:#000000;fill-opacity:0.20000000000000001;fill-rule:evenodd;stroke:#ffffff;stroke-width:1;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="m 175.146,224.86032 c 2.0562,2.50046 4.79776,2.50046 6.85573,0 2.05441,2.50046 4.79598,2.50046 6.85216,0 l 3.42697,4.16745 c -2.74159,4.16744 2.74158,7.50139 -1.37079,12.50232 -2.74157,3.33394 -5.48315,0 -8.90834,3.33394 -3.42876,-3.33394 -6.17033,0 -8.91189,-3.33394 -4.11237,-5.00093 1.37078,-8.33488 -1.36725,-12.50232 z"
        id="path4342"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccccccc"
-       inkscape:export-filename="/Users/nickidlugash/work_repos/tm2-custom-styles/wsj-satellite.tm2/img/shield/us_highway_2_lt.png"
+       inkscape:export-filename="/Users/nickidlugash/work_repos/mapbox-satellite-contours-labels.tm2/img/shield/us_highway_2_lt.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
-       inkscape:export-filename="/Users/nickidlugash/work_repos/tm2-custom-styles/wsj-satellite.tm2/img/shield/us_interstate_2_lt.png"
+       inkscape:export-filename="/Users/nickidlugash/work_repos/mapbox-satellite-contours-labels.tm2/img/shield/us_interstate_2_lt.png"
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       style="color:#000000;fill:#000000;fill-opacity:0.2;fill-rule:evenodd;stroke:#ffffff;stroke-width:1.00688814999999998;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;opacity:1"
-       d="m 181.43518,252.86562 c 3.01629,2.17317 6.46348,1.3039 8.61798,0 7.32527,13.90826 -4.73989,19.12385 -8.61798,19.99312 -3.87809,-0.86927 -15.94325,-6.08486 -8.61797,-19.99312 2.15449,1.3039 5.60168,2.17317 8.61797,0 z"
+       style="color:#000000;fill:#000000;fill-opacity:0.2;fill-rule:evenodd;stroke:#ffffff;stroke-width:1.00973165;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="m 181.5,252.86704 c 2.57969,3.49606 7.60869,2.49621 8.66795,0 7.36775,13.90628 -4.76737,19.12113 -8.66795,19.99028 -3.90058,-0.86915 -16.03571,-6.084 -8.66795,-19.99028 1.18965,2.49621 6.21864,3.49606 8.66795,0 z"
        id="path4381"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc"
@@ -186,9 +193,9 @@
        sodipodi:nodetypes="ccccc"
        inkscape:connector-curvature="0"
        id="path4426"
-       d="m 215,252.79763 c 3.03326,2.18795 9.09978,1.31277 11.26639,0 7.36648,14.00285 -4.76655,19.25392 -11.26639,20.1291 -6.49984,-0.87518 -18.63287,-6.12625 -11.26638,-20.1291 2.16661,1.31277 8.23312,2.18795 11.26638,0 z"
-       style="color:#000000;fill:#000000;fill-opacity:0.2;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.87090122999999986;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;opacity:1"
-       inkscape:export-filename="/Users/nickidlugash/work_repos/tm2-custom-styles/wsj-satellite.tm2/img/shield/us_interstate_3_lt.png"
+       d="m 215,252.79763 c 3,3.56455 9,2.56455 11.26639,0 7.36648,14.00285 -4.76655,19.25392 -11.26639,20.1291 -6.49984,-0.87518 -18.63287,-6.12625 -11.26638,-20.1291 2.26638,2.56455 8.26638,3.56455 11.26638,0 z"
+       style="color:#000000;fill:#000000;fill-opacity:0.2;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.87090123;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       inkscape:export-filename="/Users/nickidlugash/work_repos/mapbox-satellite-contours-labels.tm2/img/shield/us_interstate_3_lt.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <rect
@@ -207,7 +214,7 @@
        width="23.06477"
        id="rect4463"
        style="color:#000000;fill:#000000;fill-opacity:0.2;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.93523025999999998;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;opacity:1"
-       inkscape:export-filename="/Users/nickidlugash/work_repos/tm2-custom-styles/wsj-satellite.tm2/img/shield/us_state_2_lt.png"
+       inkscape:export-filename="/Users/nickidlugash/work_repos/mapbox-satellite-contours-labels.tm2/img/shield/us_state_2_lt.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <rect
@@ -226,7 +233,7 @@
        y="284.80997"
        rx="13.552204"
        ry="8.5522041"
-       inkscape:export-filename="/Users/nickidlugash/work_repos/tm2-custom-styles/wsj-satellite.tm2/img/shield/us_state_3_lt.png"
+       inkscape:export-filename="/Users/nickidlugash/work_repos/mapbox-satellite-contours-labels.tm2/img/shield/us_state_3_lt.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <g
@@ -247,7 +254,7 @@
     <path
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       inkscape:export-filename="/Users/nickidlugash/work_repos/tm2-custom-styles/wsj-satellite.tm2/img/shield/us_highway_3_lt.png"
+       inkscape:export-filename="/Users/nickidlugash/work_repos/mapbox-satellite-contours-labels.tm2/img/shield/us_highway_3_lt.png"
        sodipodi:nodetypes="ccccccccc"
        inkscape:connector-curvature="0"
        id="path3795"
