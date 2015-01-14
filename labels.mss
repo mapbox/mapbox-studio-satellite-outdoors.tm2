@@ -17,16 +17,17 @@
 /* ================================================================== */
 
 @place_halo:        #222;
+@place_comp_halo:   #555;
 @place_text:        #fff;
 
 @country_halo: fadeout(@place_halo,95);
-@state_halo: fadeout(@place_halo,90);
-@city_halo: fadeout(@place_halo,90);
+@state_halo: fadeout(@place_comp_halo,95);
+@city_halo: fadeout(#555,97);
 @town_halo: fadeout(@place_halo,90);
 @village_halo: fadeout(@place_halo,90);
 @neigh_halo: fadeout(@place_halo,80); // also for suburbs
 @water_halo: fadeout(@place_halo,90);
-@poi_halo: fadeout(@place_halo,82);
+@poi_halo: fadeout(@place_halo,90);
 @rail_halo: fadeout(@place_halo,85);
 @airport_halo: fadeout(@place_halo,85);
 
@@ -289,6 +290,7 @@
   text-halo-fill: @state_halo;
   text-halo-radius: 2;
   text-halo-rasterizer: fast;
+  text-halo-comp-op: overlay;
   text-min-distance: 1;
   text-size: 10;
   text-opacity: 0.8;
@@ -315,7 +317,7 @@
 
 // City labels with dots for low zoom levels.
 // The separate attachment keeps the size of the XML down.
-#place_label::citydots[type='city'][zoom>=4][zoom<=7] {
+#place_label::citydots[type='city'][zoom>=4][zoom<=7][localrank<=2] {
   // explicitly defining all the `ldir` values wer'e going
   // to use shaves a bit off the final project.xml size
   [ldir='N'],[ldir='S'],[ldir='E'],[ldir='W'],
@@ -339,8 +341,9 @@
     text-placement: point;
     text-fill: @place_text;
     text-halo-fill: @city_halo;
-    text-halo-radius: 2;
+    text-halo-radius: 3;
     text-halo-rasterizer: fast;
+    text-halo-comp-op: overlay;
     text-min-distance: 2;
     [ldir='E'] { text-dx: 4; }
     [ldir='W'] { text-dx: -4; }
@@ -353,13 +356,13 @@
     marker-width: 4;
     marker-fill: @place_text;
     marker-line-width: 1;
-    marker-line-color: @city_halo;
+    marker-line-color: rgba(0,0,0,0.5);
   }
 }
 
 // For medium to high zoom levels we do away with the dot
 // and center place labels on their point location.
-#place_label[type='city'][zoom>=8][zoom<=15] {
+#place_label[type='city'][zoom>=8][zoom<=15][localrank<=2] {
   text-name: @name;
   text-face-name: @sans;
   text-placement: point;
@@ -371,7 +374,6 @@
   text-min-distance: 5;
   text-line-spacing: -4;
   //text-avoid-edges:	true;
-  [zoom>=12] { text-halo-radius: 3; }
   // We keep the scalerank filters the same for each zoom level.
   // This is slightly inefficient-looking CartoCSS, but it saves
   // some space in the project.xml
@@ -443,7 +445,7 @@
 
 // Towns _________________________________________________________
 
-#place_label[type='town'][zoom>=8][zoom<=17] {
+#place_label[type='town'][zoom>=8][zoom<=17][localrank<=2] {
   text-name: @name;
   text-face-name: @sans;
   text-placement: point;
@@ -468,7 +470,7 @@
 
 // Villages ______________________________________________________
 
-#place_label[type='village'][zoom>=10][zoom<=17] {
+#place_label[type='village'][zoom>=10][zoom<=17][localrank<=2] {
   text-name: @name;
   text-face-name: @sans;
   text-placement: point;
@@ -491,7 +493,7 @@
 
 // Hamlets ______________________________________
 
-#place_label[zoom>=13][zoom<=18] {
+#place_label[zoom>=13][zoom<=18][localrank<=2] {
   [type='hamlet'] {
     text-name: @name;
     text-face-name: @sans;
@@ -514,7 +516,7 @@
 
 // Suburbs _______________________________________________________
 
-#place_label[type='suburb'][zoom>=12][zoom<=17] {
+#place_label[type='suburb'][zoom>=12][zoom<=17][localrank<=2] {
   text-name: @name;
   text-face-name: @sans;
   text-transform:	uppercase;
@@ -539,7 +541,7 @@
 
 // Neighbourhoods ______________________________________
 
-#place_label[zoom>=13][zoom<=18] {
+#place_label[zoom>=13][zoom<=18][localrank<=2] {
   [type='neighbourhood'] {
     text-name: @name;
     text-face-name: @sans;
@@ -836,6 +838,8 @@
       }
     marker-file: url("img/maki/park-18.svg");
     marker-fill: @poi_fill;
+    marker-line-color: rgba(0,0,0,0.75);
+    marker-line-width: 2;
   }
 }
 
@@ -877,6 +881,8 @@
 #poi_label[type='Aerodrome'][zoom>=11] {
   marker-file: url("img/airport/[maki]-12.svg");
   //marker-fill: @poi_fill;
+  marker-line-color: rgba(0,0,0,0.75);
+  marker-line-width: 2;
   text-name: "''";
   text-size: 10;
   text-fill: @place_text;
@@ -968,8 +974,9 @@
   text-wrap-width: 50;
   text-fill: @place_text;
   text-halo-fill: @poi_halo;
-  text-halo-radius: 2;
+  text-halo-radius: 2.5;
   text-halo-rasterizer: fast;
+  text-halo-comp-op: minus;
   [zoom>=15] { 
     text-size: 11; 
     text-wrap-width: 55;}

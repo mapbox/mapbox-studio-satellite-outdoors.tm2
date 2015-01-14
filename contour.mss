@@ -1,10 +1,5 @@
-// to try:
-// double instances of labels
-// casings instead of offsets
-
-
 //offset lines
-#contour.line::line[ele!=0] {
+#contour.line::line[index!=-1] {
   [zoom<=12],
   [zoom>=13][zoom<=15][index=2],
   [zoom>=13][zoom<=15][index=10],
@@ -59,27 +54,10 @@
       }*/
     }
      ::grn[ele<=0] { line-color: spin(@poi_fill, 60); }
-    /*
-     [index>=10],
-     [zoom>=16][index=5] {
-      text-name:"[ele]+'m'";
-      text-face-name:'Arial Unicode MS Regular';
-      text-placement:line;
-      text-fill:#fff;
-      text-size:10;
-      text-character-spacing: 1;
-      text-avoid-edges:true;
-      text-halo-fill:#fff;
-      text-halo-radius:3;
-      text-halo-rasterizer:fast;
-      text-clip:false;
-      text-comp-op: dst-out; 
-      text-allow-overlap: true;
-      }*/
     }
         
   }
-    #contour.label::label[ele!=0] {
+    #contour.label::label{
       [index>=10],
       [zoom>=16][index=5] {
       text-name:"[ele]+'m'";
@@ -90,9 +68,12 @@
       text-size:10;
       text-character-spacing: 1;
       text-avoid-edges:true;
-      text-halo-fill:fadeout(#000,93);
+      //text-halo-fill:fadeout(#333,90);
+      //text-halo-fill: red;
+      text-halo-fill: rgba(100,100,100,1);
       text-halo-radius:3;
-      text-halo-rasterizer:fast;
+      //text-halo-rasterizer:fast;
+      text-halo-comp-op: hard-light;
       text-clip:false;
       //text-allow-overlap: true;
     [ele<=0] { text-fill: spin(@poi_fill, 60); text-dy: -1; }
