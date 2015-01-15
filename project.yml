@@ -9,9 +9,9 @@ bounds:
   - 180
   - 85.0511
 center: 
-  - -3.4277
-  - 27.4888
-  - 4
+  - 7.9589
+  - 46.3806
+  - 11
 description: Vector contours + Mapbox Streets labels for satellite map
 format: "png8:m=h:c=128"
 interactivity_layer: ''

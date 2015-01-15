@@ -26,7 +26,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="11.313708"
      inkscape:cx="-0.022011224"
-     inkscape:cy="-3.6919166"
+     inkscape:cy="6.9146856"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -110,12 +110,5 @@
        id="path11349"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccsccsccc" />
-    <rect
-       y="1028.3622"
-       x="0"
-       height="24.000017"
-       width="24"
-       id="rect22051"
-       style="opacity:0.5;color:#000000;fill:none;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
   </g>
 </svg>

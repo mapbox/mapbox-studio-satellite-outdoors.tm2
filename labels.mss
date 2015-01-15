@@ -20,9 +20,10 @@
 @place_comp_halo:   #555;
 @place_text:        #fff;
 
-@country_halo: fadeout(@place_halo,95);
-@state_halo: fadeout(@place_comp_halo,95);
-@city_halo: fadeout(#555,97);
+@country_halo: fadeout(@place_halo,98);
+//@state_halo: fadeout(@place_halo,95);
+@state_halo: rgba(0,0,0,0.1);
+@city_halo: fadeout(#222,95);
 @town_halo: fadeout(@place_halo,90);
 @village_halo: fadeout(@place_halo,90);
 @neigh_halo: fadeout(@place_halo,80); // also for suburbs
@@ -52,7 +53,6 @@
     line-join: round;
     line-color: #fff;
     [maritime=1] {
-      line-color: #026;
       line-opacity: 0.05;
     }
     [zoom>=2] { line-width: 0.4; }
@@ -71,15 +71,11 @@
     [disputed=1][zoom>=14][zoom<=15] { line-dasharray: 13 , 7; }
     [disputed=1][zoom>=16] { line-dasharray: 15 , 8; }
   }
-  ::lev2off[admin_level=2] {
+  ::lev2off[admin_level=2][maritime=0] {
     opacity: 0.5;
     line-join: round;
     line-color: @place_halo;
     line-offset:1;
-    [maritime=1] {
-      line-color: #026;
-      line-opacity: 0.05;
-    }
     [zoom>=2] { line-width: 0.4; }
     [zoom>=4] { line-width: 0.8; }
     [zoom>=6] { line-width: 1.2; }
@@ -102,11 +98,19 @@
     line-width: 1;
     line-dasharray: 10,3,3,3;
     line-opacity: 0.25;
+    [maritime=1] {
+      line-opacity: 0.05;
+    }  
     [zoom>=6] { 
       line-width: 1.5; 
       }
     [zoom>=8] { line-width: 2; }
-    [zoom>=11] { line-opacity: 0.5; }
+    [zoom>=11] { 
+      line-opacity: 0.5;
+      [maritime=1] {
+      line-opacity: 0.05;
+      }  
+    }
     [zoom>=12] { line-width: 3; }
   }
 }
@@ -234,8 +238,9 @@
   text-size: 10;
   text-fill: @place_text;
   text-halo-fill: @country_halo;
-  text-halo-radius: 1;
+  text-halo-radius: 2;
   text-halo-rasterizer: fast;
+  text-halo-comp-op: hard-light;
   text-wrap-width: 30;
   text-min-distance: 2;
   [scalerank=1] {
@@ -315,6 +320,8 @@
 
 // Cities ________________________________________________________
 
+
+// MARKER STYLING
 // City labels with dots for low zoom levels.
 // The separate attachment keeps the size of the XML down.
 #place_label::citydots[type='city'][zoom>=4][zoom<=7][localrank<=2] {
@@ -341,9 +348,9 @@
     text-placement: point;
     text-fill: @place_text;
     text-halo-fill: @city_halo;
-    text-halo-radius: 3;
+    text-halo-radius: 2;
     text-halo-rasterizer: fast;
-    text-halo-comp-op: overlay;
+    text-halo-comp-op: hard-light;
     text-min-distance: 2;
     [ldir='E'] { text-dx: 4; }
     [ldir='W'] { text-dx: -4; }
@@ -360,6 +367,85 @@
   }
 }
 
+/*
+// City labels with dots for low zoom levels.
+// The separate attachment keeps the size of the XML down.
+#place_label::citydots[type='city'][zoom>=4][zoom<=7][localrank<=2] {
+  // explicitly defining all the `ldir` values wer'e going
+  // to use shaves a bit off the final project.xml size
+  [ldir='N'],[ldir='S'],[ldir='E'],[ldir='W'],
+  [ldir='NE'],[ldir='SE'],[ldir='SW'],[ldir='NW'] {
+    shield-file: url('img/citydot.svg');
+    [scalerank>=0][scalerank<=1] {
+      [zoom=5] { text-size: 13; marker-width: 5; }
+      [zoom>=6] { text-size: 14; marker-width: 6; }
+    }
+    [scalerank>=2][scalerank<=3] {
+      [zoom=5] { text-size: 11; }
+      [zoom=6] { text-size: 12; marker-width: 5; }
+      [zoom=7] { text-size: 13; marker-width: 6; }
+    }
+    [scalerank>=4][scalerank<=5] {
+      [zoom=6] { text-size: 11; }
+      [zoom=7] { text-size: 12; marker-width: 5; }
+    }
+    shield-name: @name;
+    shield-size: 11;
+    shield-face-name: @sans;
+    shield-placement: point;
+    shield-fill: @place_text;
+    shield-halo-fill: @city_halo;
+    shield-halo-radius: 2;
+    shield-halo-rasterizer: fast;
+    //shield-halo-comp-op: hard-light;
+    shield-margin: 2;
+    shield-unlock-image: true;
+    [ldir='E'] { shield-text-dx: 4; }
+    [ldir='W'] { shield-text-dx: -4; }
+    [ldir='N'] { shield-text-dy: -4; }
+    [ldir='S'] { shield-text-dy: 4; }
+    [ldir='NE'] { shield-text-dx: 3; shield-text-dy: -3; }
+    [ldir='SE'] { shield-text-dx: 3; shield-text-dy: 3; }
+    [ldir='SW'] { shield-text-dx: -3; shield-text-dy: 3; }
+    [ldir='NW'] { shield-text-dx: -3; shield-text-dy: -3; }
+  }  
+} 
+*/
+/*
+// City dots using Group Symbolizer
+#place_label::citydots[type='city'][zoom>=4][zoom<=7][localrank<=2] {
+  // explicitly defining all the `ldir` values wer'e going
+  // to use shaves a bit off the final project.xml size
+  [ldir='N'],[ldir='S'],[ldir='E'],[ldir='W'],
+  [ldir='NE'],[ldir='SE'],[ldir='SW'],[ldir='NW'] {
+  group-placement: point;
+  group-start-column: 1;
+  group-num-columns: 1;
+  //marker/marker-file: url('img/citydot.svg');
+  //marker/marker-width: 6;
+  //marker/marker-fill: @place_text;
+  point/point-file: url('img/citydot.svg');
+  //point/point-width: 6;
+  //point/point-fill: @place_text;
+  text/text-name: @name;
+  text/text-face-name: @sans;
+  text/text-fill: @place_text;
+  text/text-halo-fill: @city_halo;
+  text/text-halo-radius: 2;
+  text/text-halo-rasterizer: fast;
+  //text/text-dy: 4;
+    [ldir='E'] { text/text-dx: 4; }
+    [ldir='W'] { text/text-dx: -4; }
+    [ldir='N'] { text/text-dy: -4; }
+    [ldir='S'] { text/text-dy: 4; }
+    [ldir='NE'] { text/text-dx: 3; text/text-dy: -3; }
+    [ldir='SE'] { text/text-dx: 3; text/text-dy: 3; }
+    [ldir='SW'] { text/text-dx: -3; text/text-dy: 3; }
+    [ldir='NW'] { text/text-dx: -3; text/text-dy: -3; }  
+    }
+}
+*/
+  
 // For medium to high zoom levels we do away with the dot
 // and center place labels on their point location.
 #place_label[type='city'][zoom>=8][zoom<=15][localrank<=2] {
@@ -609,7 +695,7 @@
 @us-shield-name: "[ref].replace(';.*', '').replace('^[^\d]*', '')";
 #road_label::us_shield[class='motorway'][zoom>=11][reflen>0][reflen<=6]{
   // Default shields
-  shield-file: url("img/shield/motorway_lt_lg_[reflen].png");
+  shield-file: url("img/shield/svg/motorway_lt_lg_[reflen].svg");
   shield-name: [ref];
   shield-face-name: @sans_bold;
   shield-size: 9;
@@ -627,7 +713,7 @@
     }  
   // 1 & 2 digit US state highways
   [ref =~ '^(AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|MT|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY|SR)\ ?\d[\dA-Z]?(;.*|$)'] {
-    shield-file: url(img/shield/us_state_2_lt.png);
+    shield-file: url(img/shield/us_state_2_lt.svg);
     shield-name: @us-shield-name;
     [zoom>=15] {
       //shield-file: url(img/shield/us_state_2.png);
@@ -635,7 +721,7 @@
   }
   // 3 digit US state highways
   [ref =~ '^(AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|MT|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY|SR)\ ?\d\d[\dA-Z](;.*|$)'] {
-    shield-file: url(img/shield/us_state_3_lt.png);
+    shield-file: url(img/shield/us_state_3_lt.svg);
     shield-name: @us-shield-name;
     [zoom>=15] {
       //shield-file: url(img/shield/us_state_3.png);
@@ -643,7 +729,7 @@
   }
   // 1 & 2 digit US highways
   [ref =~ '^US\ ?\d[\dA-Z]?(;.*|$)'] {
-    shield-file: url(img/shield/us_highway_2_lt.png);
+    shield-file: url(img/shield/us_highway_2_lt.svg);
     shield-name: @us-shield-name;
     [zoom>=15] {
       //shield-file: url(img/shield/us_highway_2.png);
@@ -651,7 +737,7 @@
   }
   // 3 digit US highways
   [ref =~ '^US\ ?\d\d[\dA-Z](;.*|$)'] {
-    shield-file: url(img/shield/us_highway_3_lt.png);
+    shield-file: url(img/shield/us_highway_3_lt.svg);
     shield-name: @us-shield-name;
     [zoom>=15] {
      // shield-file: url(img/shield/us_highway_3.png);
@@ -659,7 +745,7 @@
   }
   // 1 & 2 digit US Interstates
   [ref =~ '^I\ ?\d[\dA-Z]?(;.*|$)'] {
-    shield-file: url(img/shield/us_interstate_2_lt.png);
+    shield-file: url(img/shield/us_interstate_2_lt.svg);
     shield-name: @us-shield-name;
     shield-text-dy:	-1;
     [zoom>=15] {
@@ -668,7 +754,7 @@
   }
   // 3 digit US Interstates
   [ref =~ '^I\ ?\d\d[\dA-Z](;.*|$)'] {
-    shield-file: url(img/shield/us_interstate_3_lt.png);
+    shield-file: url(img/shield/us_interstate_3_lt.svg);
     shield-name: @us-shield-name;
     shield-text-dy:	-1;
     [zoom>=15] {
@@ -838,8 +924,8 @@
       }
     marker-file: url("img/maki/park-18.svg");
     marker-fill: @poi_fill;
-    marker-line-color: rgba(0,0,0,0.75);
-    marker-line-width: 2;
+    //marker-line-color: rgba(0,0,0,0.75);
+    //marker-line-width: 1;
   }
 }
 

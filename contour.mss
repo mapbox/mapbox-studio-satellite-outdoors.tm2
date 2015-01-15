@@ -10,6 +10,7 @@
       line-opacity:0.4;
       line-join:round;
       line-clip:false;
+      //polygon-fill: rgba(100,255,100,0.05);
       //line-smooth: 0.1; // try after mapnik update
       [zoom<=14] {
         line-width:0.5;
