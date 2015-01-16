@@ -5,8 +5,8 @@
 <Parameters>
   <Parameter name="attribution"><![CDATA[<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a> <a class='mapbox-improve-map' href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a>]]></Parameter>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">-62.1167,48.9442,7</Parameter>
-  <Parameter name="description"><![CDATA[Vector contours + Mapbox Streets labels for satellite map]]></Parameter>
+  <Parameter name="center">-65.9039,-21.6892,12</Parameter>
+  <Parameter name="description"><![CDATA[Vector contours + Mapbox Streets labels on a satellite base map]]></Parameter>
   <Parameter name="format">png8:m=h:c=128</Parameter>
   <Parameter name="maxzoom">22</Parameter>
   <Parameter name="minzoom">0</Parameter>

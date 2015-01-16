@@ -1,6 +1,7 @@
 _prefs: 
-  baselayer: matt.hb1g1mdo
-  saveCenter: true
+  baselayer: null
+  mapid: ''
+  saveCenter: false
 _properties: {}
 attribution: "<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a> <a class='mapbox-improve-map' href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a>"
 bounds: 
@@ -9,10 +10,10 @@ bounds:
   - 180
   - 85.0511
 center: 
-  - -62.1167
-  - 48.9442
-  - 7
-description: Vector contours + Mapbox Streets labels for satellite map
+  - -65.9039
+  - -21.6892
+  - 12
+description: Vector contours + Mapbox Streets labels on a satellite base map
 format: "png8:m=h:c=128"
 interactivity_layer: ''
 layers: 
@@ -48,8 +49,8 @@ minzoom: 0
 name: Satellite Contours + Labels
 source: "mapbox:///mapbox.satellite,mapbox.mapbox-terrain-v2,mapbox.mapbox-streets-v5"
 styles: 
+  - style.mss
+  - satellite.mss
   - contour.mss
   - labels.mss
-  - satellite.mss
-  - style.mss
 template: ''
