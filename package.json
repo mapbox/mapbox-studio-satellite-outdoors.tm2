@@ -1,0 +1,5 @@
+{
+  "name": "mapbox-studio-satellite-outdoors.tm2",
+  "version": "1.0.0",
+  "description": "Mapbox Satellite Outdoors for Mapbox Studio",
+  "main": "./package.json"
