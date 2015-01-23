@@ -1,4 +1,4 @@
-mapbox-satellite-contours-labels.tm2
+mapbox-studio-satellite-outdoors
 ====================================
 
 Satellite imagery with labels and contour lines.
