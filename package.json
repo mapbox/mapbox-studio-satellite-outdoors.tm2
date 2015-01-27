@@ -1,6 +1,6 @@
 {
   "name": "mapbox-studio-satellite-outdoors",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Mapbox Satellite Outdoors style for Mapbox Studio",
   "main": "./package.json"
 }
