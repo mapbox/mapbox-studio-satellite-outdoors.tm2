@@ -34,13 +34,23 @@
   <Font face-name="Open Sans Semibold Italic"/>
   <Font face-name="Arial Unicode MS Regular"/>
 </FontSet>
+<Style name="mapbox_satellite_open" filter-mode="first">
+  <Rule>
+    <RasterSymbolizer opacity="1" />
+  </Rule>
+</Style>
 <Layer name="mapbox_satellite_open"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-      </Layer>
+    <StyleName>mapbox_satellite_open</StyleName>  </Layer>
 
+<Style name="mapbox_satellite_plus" filter-mode="first">
+  <Rule>
+    <RasterSymbolizer opacity="1" />
+  </Rule>
+</Style>
 <Layer name="mapbox_satellite_plus"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-      </Layer>
+    <StyleName>mapbox_satellite_plus</StyleName>  </Layer>
 
 <Style name="mapbox_satellite_full" filter-mode="first">
   <Rule>
