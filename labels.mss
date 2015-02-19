@@ -88,18 +88,19 @@
 // MARINE LABELS
 // =====================================================================
 
-#marine_label {
+#marine_label[zoom>=2]["mapnik::geometry_type"=1],
+#marine_label[zoom>=2]["mapnik::geometry_type"=2] {
   text-name: @name;
   text-face-name: @sans_lt_italic;
   text-fill: @marine_text;
   text-wrap-width: 80;
   text-wrap-before: true;
-  [placement = 'point'] {
+  ["mapnik::geometry_type"=1] {
     text-placement: point;
+    text-wrap-width: 30;
   }
-  [placement = 'line'] {
+  ["mapnik::geometry_type"=2] {
     text-placement: line;
-    text-avoid-edges: true;
   }
   [labelrank = 1] {
     [zoom = 3] {
@@ -190,15 +191,8 @@
 
 // Countries _____________________________________________________
 
-#country_label_line {
-  line-color: #fff;
-  line-opacity: 0.6;
-  line-width: 0.8;
-  line-dasharray: 5,2;
-}
-
 // these styles assume usage of custom admin_label tables.
-#country_label[zoom<=10] {
+#country_label[zoom>=2][zoom<=10] {
   text-name: @name;
   text-face-name: @sans_bold;
   text-placement: point;
@@ -256,7 +250,7 @@
 // States ________________________________________________________
 
 #state_label[zoom>=4][zoom<=10] {
-  text-name: @name;
+  text-name: [abbr];
   text-face-name: @sans_lt;
   text-placement: point;
   text-fill: @place_text;
@@ -267,6 +261,18 @@
   text-halo-rasterizer: fast;
   text-halo-comp-op: minus;
   text-margin: 2;
+  [zoom>=4][area>100000],
+  [zoom>=5][area>50000],
+  [zoom>=6][area>10000],
+  [zoom>=7][area<=10000] {
+    text-name: [abbr];
+  }
+  [zoom>=5][area>100000],
+  [zoom>=6][area>50000],
+  [zoom>=7][area>10000],
+  [zoom>=8][area<=10000] {
+    text-name: @name;
+  }
   [zoom>=5][zoom<=6] {
     [area>10000] { text-size: 12; }
     [area>50000] { text-size: 14; }
@@ -290,7 +296,7 @@
 
 // City labels with dots for low zoom levels.
 // The separate attachment keeps the size of the XML down.
-#place_label::citydots[type='city'][zoom>=4][zoom<=7][localrank<=2] {
+#place_label::citydots[type='city'][zoom>=4][zoom<=7][localrank<=1] {
   // explicitly defining all the `ldir` values wer'e going
   // to use shaves a bit off the final project.xml size
   [ldir='N'],[ldir='S'],[ldir='E'],[ldir='W'],
@@ -335,7 +341,7 @@
   
 // For medium to high zoom levels we do away with the dot
 // and center place labels on their point location.
-#place_label[type='city'][zoom>=8][zoom<=15][localrank<=2] {
+#place_label[type='city'][zoom>=8][zoom<=15][localrank<=1] {
   text-name: @name;
   text-face-name: @sans;
   text-placement: point;
@@ -418,7 +424,7 @@
 
 // Towns _________________________________________________________
 
-#place_label[type='town'][zoom>=8][zoom<=17][localrank<=2] {
+#place_label[type='town'][zoom>=8][zoom<=17][localrank<=1] {
   text-name: @name;
   text-face-name: @sans;
   text-placement: point;
@@ -443,7 +449,7 @@
 
 // Villages ______________________________________________________
 
-#place_label[type='village'][zoom>=10][zoom<=17][localrank<=2] {
+#place_label[type='village'][zoom>=10][zoom<=17][localrank<=1] {
   text-name: @name;
   text-face-name: @sans;
   text-placement: point;
@@ -467,7 +473,7 @@
 
 // Hamlets ______________________________________
 
-#place_label[zoom>=13][zoom<=18][localrank<=2] {
+#place_label[zoom>=13][zoom<=18][localrank<=1] {
   [type='hamlet'] {
     text-name: @name;
     text-face-name: @sans;
@@ -491,7 +497,7 @@
 
 // Suburbs _______________________________________________________
 
-#place_label[type='suburb'][zoom>=12][zoom<=17][localrank<=2] {
+#place_label[type='suburb'][zoom>=12][zoom<=17][localrank<=1] {
   text-name: @name;
   text-face-name: @sans;
   text-transform: uppercase;
@@ -515,7 +521,7 @@
 
 // Neighbourhoods ______________________________________
 
-#place_label[zoom>=13][zoom<=18][localrank<=2] {
+#place_label[zoom>=13][zoom<=18][localrank<=1] {
   [type='neighbourhood'] {
     text-name: @name;
     text-face-name: @sans;

@@ -47,7 +47,7 @@ layers:
 maxzoom: 22
 minzoom: 0
 name: Satellite Contours + Labels
-source: "mapbox:///mapbox.satellite,mapbox.mapbox-terrain-v2,mapbox.mapbox-streets-v5"
+source: "mapbox:///mapbox.satellite,mapbox.mapbox-terrain-v2,mapbox.mapbox-streets-v6"
 styles: 
   - style.mss
   - satellite.mss
