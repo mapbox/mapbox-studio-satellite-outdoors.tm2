@@ -88,18 +88,19 @@
 // MARINE LABELS
 // =====================================================================
 
-#marine_label {
+#marine_label[zoom>=2]["mapnik::geometry_type"=1],
+#marine_label[zoom>=2]["mapnik::geometry_type"=2] {
   text-name: @name;
   text-face-name: @sans_lt_italic;
   text-fill: @marine_text;
   text-wrap-width: 80;
   text-wrap-before: true;
-  [placement = 'point'] {
+  ["mapnik::geometry_type"=1] {
     text-placement: point;
+    text-wrap-width: 30;
   }
-  [placement = 'line'] {
+  ["mapnik::geometry_type"=2] {
     text-placement: line;
-    text-avoid-edges: true;
   }
   [labelrank = 1] {
     [zoom = 3] {
@@ -190,15 +191,8 @@
 
 // Countries _____________________________________________________
 
-#country_label_line {
-  line-color: #fff;
-  line-opacity: 0.6;
-  line-width: 0.8;
-  line-dasharray: 5,2;
-}
-
 // these styles assume usage of custom admin_label tables.
-#country_label[zoom<=10] {
+#country_label[zoom>=2][zoom<=10] {
   text-name: @name;
   text-face-name: @sans_bold;
   text-placement: point;
@@ -256,7 +250,7 @@
 // States ________________________________________________________
 
 #state_label[zoom>=4][zoom<=10] {
-  text-name: @name;
+  text-name: [abbr];
   text-face-name: @sans_lt;
   text-placement: point;
   text-fill: @place_text;
@@ -267,6 +261,18 @@
   text-halo-rasterizer: fast;
   text-halo-comp-op: minus;
   text-margin: 2;
+  [zoom>=4][area>100000],
+  [zoom>=5][area>50000],
+  [zoom>=6][area>10000],
+  [zoom>=7][area<=10000] {
+    text-name: [abbr];
+  }
+  [zoom>=5][area>100000],
+  [zoom>=6][area>50000],
+  [zoom>=7][area>10000],
+  [zoom>=8][area<=10000] {
+    text-name: @name;
+  }
   [zoom>=5][zoom<=6] {
     [area>10000] { text-size: 12; }
     [area>50000] { text-size: 14; }
@@ -290,7 +296,7 @@
 
 // City labels with dots for low zoom levels.
 // The separate attachment keeps the size of the XML down.
-#place_label::citydots[type='city'][zoom>=4][zoom<=7][localrank<=2] {
+#place_label::citydots[type='city'][zoom>=4][zoom<=7][localrank<=1] {
   // explicitly defining all the `ldir` values wer'e going
   // to use shaves a bit off the final project.xml size
   [ldir='N'],[ldir='S'],[ldir='E'],[ldir='W'],
@@ -335,7 +341,7 @@
   
 // For medium to high zoom levels we do away with the dot
 // and center place labels on their point location.
-#place_label[type='city'][zoom>=8][zoom<=15][localrank<=2] {
+#place_label[type='city'][zoom>=8][zoom<=15][localrank<=1] {
   text-name: @name;
   text-face-name: @sans;
   text-placement: point;
@@ -418,7 +424,7 @@
 
 // Towns _________________________________________________________
 
-#place_label[type='town'][zoom>=8][zoom<=17][localrank<=2] {
+#place_label[type='town'][zoom>=8][zoom<=17][localrank<=1] {
   text-name: @name;
   text-face-name: @sans;
   text-placement: point;
@@ -443,7 +449,7 @@
 
 // Villages ______________________________________________________
 
-#place_label[type='village'][zoom>=10][zoom<=17][localrank<=2] {
+#place_label[type='village'][zoom>=10][zoom<=17][localrank<=1] {
   text-name: @name;
   text-face-name: @sans;
   text-placement: point;
@@ -467,7 +473,7 @@
 
 // Hamlets ______________________________________
 
-#place_label[zoom>=13][zoom<=18][localrank<=2] {
+#place_label[zoom>=13][zoom<=18][localrank<=1] {
   [type='hamlet'] {
     text-name: @name;
     text-face-name: @sans;
@@ -491,7 +497,7 @@
 
 // Suburbs _______________________________________________________
 
-#place_label[type='suburb'][zoom>=12][zoom<=17][localrank<=2] {
+#place_label[type='suburb'][zoom>=12][zoom<=17][localrank<=1] {
   text-name: @name;
   text-face-name: @sans;
   text-transform: uppercase;
@@ -515,7 +521,7 @@
 
 // Neighbourhoods ______________________________________
 
-#place_label[zoom>=13][zoom<=18][localrank<=2] {
+#place_label[zoom>=13][zoom<=18][localrank<=1] {
   [type='neighbourhood'] {
     text-name: @name;
     text-face-name: @sans;
@@ -545,53 +551,32 @@
 
 // highway shields
 
-@us-shield-name: "[ref].replace(';.*', '').replace('^[^\d]*', '')";
-#road_label::us_shield[class='motorway'][zoom>=11][reflen>0][reflen<=6]{
-  // Default shields
-  shield-file: url("img/shield/motorway_lg_[reflen].svg");
-  shield-name: [ref];
-  shield-face-name: @sans_bold;
+// highway shield
+
+#road_label::shield-pt[class='motorway'][zoom>=7][zoom<=10][localrank=1][reflen<=6],
+#road_label::shield-pt[class='motorway'][zoom>=9][zoom<=10][localrank=1][reflen<=6],
+#road_label::shield-ln[zoom>=11][reflen<=6] {
+  shield-name: "[ref].replace('·', '\n')";
   shield-size: 9;
-  shield-character-spacing:	0.5;
-  shield-fill: #fff;
-  shield-min-padding: 10;
-  shield-repeat-distance: 200;
-  shield-margin: 20;
-  shield-halo-fill: fadeout(#000,70);
-  shield-halo-radius: 2;
-  [zoom>=14] { shield-repeat-distance: 80; }
-  // 1 & 2 digit US state highways
-  [ref =~ '^(AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|MT|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY|SR)\ ?\d[\dA-Z]?(;.*|$)'] {
-    shield-file: url(img/shield/us_state_2_lt.svg);
-    shield-name: @us-shield-name; 
+  shield-line-spacing: -4;
+  shield-file: url('img/shield/[shield]-[reflen].svg');
+  shield-face-name: @sans_bold;
+  shield-fill: #000;
+  [zoom>=14] {
+    shield-transform: scale(1.25,1.25);
+    shield-size: 11;
   }
-  // 3 digit US state highways
-  [ref =~ '^(AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|MT|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY|SR)\ ?\d\d[\dA-Z](;.*|$)'] {
-    shield-file: url(img/shield/us_state_3_lt.svg);
-    shield-name: @us-shield-name; 
-  }
-  // 1 & 2 digit US highways
-  [ref =~ '^US\ ?\d[\dA-Z]?(;.*|$)'] {
-    shield-file: url(img/shield/us_highway_2_lt.svg);
-    shield-name: @us-shield-name;
-  }
-  // 3 digit US highways
-  [ref =~ '^US\ ?\d\d[\dA-Z](;.*|$)'] {
-    shield-file: url(img/shield/us_highway_3_lt.svg);
-    shield-name: @us-shield-name;
-  }
-  // 1 & 2 digit US Interstates
-  [ref =~ '^I\ ?\d[\dA-Z]?(;.*|$)'] {
-    shield-file: url(img/shield/us_interstate_2_lt.svg);
-    shield-name: @us-shield-name;
-    shield-text-dy:	-1;
-  }
-  // 3 digit US Interstates
-  [ref =~ '^I\ ?\d\d[\dA-Z](;.*|$)'] {
-    shield-file: url(img/shield/us_interstate_3_lt.svg);
-    shield-name: @us-shield-name;
-    shield-text-dy:	-1; 
-  }
+}
+#road_label::shield-pt[class='motorway'][zoom>=7][zoom<=10][localrank=1][reflen<=6],
+#road_label::shield-pt[class='motorway'][zoom>=9][zoom<=10][localrank=1][reflen<=6] {
+  shield-placement: point;
+  shield-avoid-edges: false;
+}
+#road_label::shield-ln[zoom>=11][reflen<=6] {
+  shield-placement: line;
+  shield-spacing: 400;
+  shield-min-distance: 100;
+  shield-avoid-edges: true;
 }
 
 // regular labels
