@@ -93,8 +93,6 @@
   text-name: @name;
   text-face-name: @sans_lt_italic;
   text-fill: @marine_text;
-  text-wrap-width: 80;
-  text-wrap-before: true;
   ["mapnik::geometry_type"=1] {
     text-placement: point;
     text-wrap-width: 30;
@@ -102,86 +100,35 @@
   ["mapnik::geometry_type"=2] {
     text-placement: line;
   }
-  [labelrank = 1] {
-    [zoom = 3] {
-      text-size: 20;
-      text-character-spacing: 8;
-      text-line-spacing: 16;
-    }
-    [zoom = 4] {
-      text-size: 25;
-      text-character-spacing: 16;
-      text-line-spacing: 24;
-    }
-    [zoom = 5] {
-      text-size: 30;
-      text-character-spacing: 20;
-      text-line-spacing: 32;
-    }
+  [labelrank=1][zoom>=2],
+  [labelrank=2][zoom>=3],
+  [labelrank=3][zoom>=4],
+  [labelrank=4][zoom>=5],
+  [labelrank=5][zoom>=6],
+  [labelrank=6][zoom>=7] {
+    text-size: 13;
+    text-character-spacing: 1;
   }
-  [labelrank = 2] {
-    [zoom = 3] {
-      text-size: 13;
-      text-character-spacing: 1;
-      text-line-spacing: 6;
-    }
-    [zoom = 4] {
-      text-size: 14;
-      text-character-spacing: 2;
-      text-line-spacing: 8;
-    }
-    [zoom = 5] {
-      text-size: 20;
-      text-character-spacing: 4;
-      text-line-spacing: 8;
-    }
-    [zoom = 6] {
-      text-size: 24;
-      text-character-spacing: 5;
-      text-line-spacing: 10;
-    }
-  }
-  [labelrank = 3] {
-    [zoom = 3] {
-      text-size: 12;
-      text-character-spacing: 2;
-      text-line-spacing: 3;
-    }
-    [zoom = 4] {
-      text-size: 13;
-      text-character-spacing: 3;
-      text-line-spacing: 8;
-    }
-    [zoom = 5] {
-      text-size: 15;
-      text-character-spacing: 4;
-      text-line-spacing: 8;
-    }
-    [zoom = 6] {
-      text-size: 18;
-      text-character-spacing: 5;
-      text-line-spacing: 10;
-    }
-  }
-  [labelrank = 4][zoom = 4],
-  [labelrank = 5][zoom = 5],
-  [labelrank = 6][zoom = 6] {
-    text-size: 12;
-    text-character-spacing: 2;
-    text-line-spacing: 6;
-  }
-  [labelrank = 4][zoom = 5],
-  [labelrank = 5][zoom = 6],
-  [labelrank = 6][zoom = 7] {
-    text-size: 14;
-    text-character-spacing: 3;
-    text-line-spacing: 8;
-  }
-  [labelrank = 4][zoom = 6],
-  [labelrank = 5][zoom = 7] {
+  [labelrank=1][zoom>=3],
+  [labelrank=2][zoom>=4],
+  [labelrank=3][zoom>=5],
+  [labelrank=4][zoom>=6],
+  [labelrank=5][zoom>=7],
+  [labelrank=6][zoom>=8] {
     text-size: 16;
+    text-character-spacing: 2;
+  }
+  [labelrank=1][zoom>=4],
+  [labelrank=2][zoom>=5],
+  [labelrank=3][zoom>=6] {
+    text-size: 20;
     text-character-spacing: 4;
-    text-line-spacing: 1;
+  }
+  [labelrank=1][zoom>=5],
+  [labelrank=2][zoom>=6],
+  [labelrank=3][zoom>=7] {
+    text-size: 24;
+    text-character-spacing: 8;
   }
 }
 
