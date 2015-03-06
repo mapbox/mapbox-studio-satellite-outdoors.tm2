@@ -3,15 +3,13 @@
 // =====================================================================
 
 //offset lines
-#contour.line::line[index!=-1] {
+#contour[index!=-1] {
   ::grn,
   ::blk {
     line-color: #c4ffdb;
     line-opacity: 0.4;
     line-join: round;
     line-clip: false;
-    //line-smooth: 0.1; // try after mapnik update
-    //polygon-fill: rgba(255,255,0,0.005); // try after fill issue fixed
     [zoom<=14] {
       line-width: 0.5;
       [index>=5] { line-width: 1; line-opacity: 0.5; }
@@ -44,7 +42,7 @@
 // CONTOUR LABELS
 // =====================================================================
 
-#contour.label::label {
+#contour::label {
   [zoom<=12][index>=5],
   [zoom>=13][zoom<=15][index=10],
   [zoom>=16][index>=5] {

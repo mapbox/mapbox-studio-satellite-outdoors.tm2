@@ -16,34 +16,7 @@ center:
 description: Vector contours + Mapbox Streets labels on a satellite base map
 format: "png8:m=h:c=128"
 interactivity_layer: ''
-layers: 
-  - mapbox_satellite_open
-  - mapbox_satellite_plus
-  - mapbox_satellite_full
-  - mapbox_satellite_watermask
-  - contour.line
-  - landuse
-  - waterway
-  - water
-  - aeroway
-  - barrier_line
-  - building
-  - landuse_overlay
-  - tunnel
-  - road
-  - bridge
-  - admin
-  - country_label_line
-  - country_label
-  - marine_label
-  - state_label
-  - place_label
-  - water_label
-  - poi_label
-  - road_label
-  - waterway_label
-  - housenum_label
-  - contour.label
+layers: null
 maxzoom: 22
 minzoom: 0
 name: Satellite Contours + Labels
