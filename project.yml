@@ -14,7 +14,7 @@ center:
   - -21.6892
   - 12
 description: Vector contours + Mapbox Streets labels on a satellite base map
-format: "png8:m=h:c=128"
+format: jpeg90
 interactivity_layer: ''
 layers: null
 maxzoom: 22
