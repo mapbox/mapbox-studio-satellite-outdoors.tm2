@@ -18,7 +18,7 @@ interactivity_layer: ''
 layers: null
 maxzoom: 22
 minzoom: 0
-name: Satellite Outdoors
+name: Satellite Contours and Labels
 source: "mapbox:///mapbox.satellite,mapbox.mapbox-terrain-v2,mapbox.mapbox-streets-v6"
 styles: 
   - style.mss
