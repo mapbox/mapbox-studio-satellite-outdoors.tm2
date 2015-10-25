@@ -10,7 +10,7 @@
   <Parameter name="format">jpeg90</Parameter>
   <Parameter name="maxzoom">22</Parameter>
   <Parameter name="minzoom">0</Parameter>
-  <Parameter name="name"><![CDATA[Satellite Contours + Labels]]></Parameter>
+  <Parameter name="name"><![CDATA[satellite-outdoors-test]]></Parameter>
   <Parameter name="source"><![CDATA[mapbox:///mapbox.satellite,mapbox.mapbox-terrain-v2,mapbox.mapbox-streets-v6]]></Parameter>
 </Parameters>
 

@@ -1,9 +1,8 @@
 _prefs: 
   baselayer: null
-  mapid: ''
   saveCenter: false
 _properties: {}
-attribution: "<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a> <a class='mapbox-improve-map' href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a>"
+attribution: "<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a> <a class='mapbox-improve-map' href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a> <a href='https://www.digitalglobe.com/' target='_blank'>&copy; DigitalGlobe</a>"
 bounds: 
   - -180
   - -85.0511
@@ -19,7 +18,7 @@ interactivity_layer: ''
 layers: null
 maxzoom: 22
 minzoom: 0
-name: Satellite Contours + Labels
+name: Satellite Outdoors
 source: "mapbox:///mapbox.satellite,mapbox.mapbox-terrain-v2,mapbox.mapbox-streets-v6"
 styles: 
   - style.mss
