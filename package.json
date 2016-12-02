@@ -2,5 +2,9 @@
   "name": "@mapbox/mapbox-studio-satellite-outdoors",
   "version": "2.1.4",
   "description": "Mapbox Satellite Outdoors style for Mapbox Studio",
-  "main": "./package.json"
+  "main": "./package.json",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mapbox/mapbox-studio-satellite-outdoors.tm2.git"
+  }
 }
